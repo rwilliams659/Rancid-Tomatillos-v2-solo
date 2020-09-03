@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CommentContainer from '../CommentContainer/CommentContainer';
 import './MovieDetails.css';
-import { deleteRating, postNewRating } from '../apiCalls';
+import { deleteRating, postNewRating, getMovieDetails, getMovieVideo } from '../apiCalls';
 import heartFavoriteFalse from '../images/heart-outline.png';
 import heartFavoriteTrue from '../images/heart.png';
 
@@ -12,6 +12,18 @@ class MovieDetails extends Component {
     this.state = {
       formValue: null,
       error: '',
+      movieDetails: {},
+      videos: []
+    }
+  }
+
+  async componentDidMount() {
+    try {
+      const movieDetails = await getMovieDetails(this.props.currentMovie.id)
+      const videos = await getMovieVideo(this.props.currentMovie.id);
+      this.setState({movieDetails: movieDetails.movie, videos: videos.videos})
+    } catch(error) {
+      this.setState({error: 'Error retrieving all movie Details'})
     }
   }
 

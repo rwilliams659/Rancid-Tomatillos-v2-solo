@@ -16,6 +16,18 @@ export const checkLoginCredentials = async (loginInfo) => {
   return validation;
 }
 
+export const getMovieDetails = async (id) => {
+  const detailsResponse = await fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`);
+  const movieDetails = await checkResponse(detailsResponse); 
+  return movieDetails;
+}
+
+export const getMovieVideo = async (id) => {
+  const videoResponse = await fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}/videos`);
+  const video = await checkResponse(videoResponse); 
+  return video; 
+}
+
 export const fetchUserRatings = async (userId) => {
   const response = await fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/users/${userId}/ratings`);
   const userRatings = await checkResponse(response);
