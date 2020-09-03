@@ -66,11 +66,14 @@ class MovieDetails extends Component {
           <img src={this.props.poster_path} alt={this.props.title} className='movie-details-img'/>
         </section>
         <section className='movie-info'>
-          {this.props.loggedIn && inFavorites &&
-            <img className="details-heart" src={heartFavoriteTrue} alt='favorited' id={`heart${this.props.currentMovie.id}`} onClick={(event) => { this.props.toggleFavorite(event)}}/>
-          }
-          {this.props.loggedIn && !inFavorites &&
-            <img className="details-heart" src={heartFavoriteFalse} alt='not favorited' id={`heart${this.props.currentMovie.id}`} onClick={(event) => { this.props.toggleFavorite(event)}}/>
+          {this.props.loggedIn && 
+            <img 
+              className='details-heart' 
+              id={`heart${this.props.currentMovie.id}`} 
+              src={inFavorites ? heartFavoriteTrue : heartFavoriteFalse}
+              alt={inFavorites ? 'favorited' : 'not favorited'}
+              onClick={(event) => {this.props.toggleFavorite(event)}}
+            />
           }
           <h2>{this.props.title}</h2>
           <h3>Release date: {this.props.release_date}</h3>
