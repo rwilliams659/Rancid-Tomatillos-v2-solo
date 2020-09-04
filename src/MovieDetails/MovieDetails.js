@@ -64,16 +64,17 @@ class MovieDetails extends Component {
     return (
       <section className='MovieDetails'>
         <section className='title-section'>
-          <h2>{title}</h2>
-          {this.props.loggedIn &&
-            <img
-              className='details-heart' 
-              id={`heart${this.props.currentMovie.id}`} 
-              src={inFavorites ? heartFavoriteTrue : heartFavoriteFalse}
-              alt={inFavorites ? 'favorited' : 'not favorited'}
-              onClick={(event) => {this.props.toggleFavorite(event)}}
-            />
-          }
+          <h2 className='title'>{title}
+            {this.props.loggedIn &&
+              <img
+                className='details-heart'
+                id={`heart${this.props.currentMovie.id}`}
+                src={inFavorites ? heartFavoriteTrue : heartFavoriteFalse}
+                alt={inFavorites ? 'favorited' : 'not favorited'}
+                onClick={(event) => { this.props.toggleFavorite(event) }}
+              />
+            }
+          </h2>
           <p>{tagline}</p>
           {this.state.error &&
             <h3 className='error-msg'>{this.state.error}</h3>
@@ -81,7 +82,7 @@ class MovieDetails extends Component {
         </section>
         <section className='main-movie-section'>
           <section className='poster-column'>
-            <img src={poster_path}/>
+            <img className='poster' src={poster_path}/>
           </section>
           <section className='movie-info'>
             <p className='avg-rating'>{average_rating}/10</p>
@@ -91,37 +92,34 @@ class MovieDetails extends Component {
             <p>Budget: {budget}</p>
             <p>Revenue: {revenue}</p>
             <p>Runtime: {runtime}</p>
-            {this.props.loggedIn && 
+            {this.props.loggedIn && !this.props.currentMovieRatingInfo && 
+              <button onClick={this.showForm}>Add rating</button>
+            }
+            {this.props.loggedIn && this.props.currentMovieRatingInfo && 
               <>
-              {this.props.currentMovieRatingInfo ? 
-                <button onClick={this.showForm}>Add rating</button> :
-                  <>
-                  <p>Your Rating: {this.props.currentMovieRatingInfo.rating}</p>
-                  <button>Delete rating</button>
-                  </>
-              }
+                <p>Your Rating: {this.props.currentMovieRatingInfo.rating}</p>
+                <button>Delete rating</button>
               </>
             }
           </section>
-          <section className='preview-comments'>
-            <section className='video-container'>
-              {this.state.videos.length > 0 ? 
-                <>
-                  <h3>Watch Preview</h3>
-                  <ReactPlayer 
-                    alt='trailer'
-                    url={`www.youtube.com/watch?v=${this.state.videos[0].key}`}
-                  /> 
-                </> :
-                <img src={backdrop_path} />
-            } 
-            </section>
-            <section>
-              <CommentContainer loggedIn={this.props.loggedIn} movieId={this.props.id} />
-            </section>
+        </section>
+        <section className='trailer-comments'>
+          <section className='video-container'>
+            {this.state.videos.length > 0 ? 
+              <>
+                <h3>Watch Preview</h3>
+                <ReactPlayer 
+                  alt='trailer'
+                  url={`www.youtube.com/watch?v=${this.state.videos[0].key}`}
+                /> 
+              </> :
+              <img src={backdrop_path} />
+          } 
+          </section>
+          <section className='comments-section'>
+            <CommentContainer loggedIn={this.props.loggedIn} movieId={this.props.id} />
           </section>
         </section>
-
       </section>
     )
   }
