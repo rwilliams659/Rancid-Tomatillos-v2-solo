@@ -86,7 +86,7 @@ class MovieDetails extends Component {
               />
             }
           </h2>
-          <p>{tagline}</p>
+          <p><span className='category'>{tagline}</span></p>
           {this.state.error &&
             <h3 className='error-msg'>{this.state.error}</h3>
           }
@@ -116,7 +116,7 @@ class MovieDetails extends Component {
             }
             {this.props.loggedIn && this.props.currentMovieRatingInfo && 
               <>
-                <p>Your Rating: {this.props.currentMovieRatingInfo.rating}</p>
+                <p><span className='category'>Your Rating:</span> {this.props.currentMovieRatingInfo.rating}</p>
                 <button className='rating-btn' id={this.props.currentMovieRatingInfo.id} onClick={this.handlingRatingDeletion}>Delete rating</button>
               </>
             }

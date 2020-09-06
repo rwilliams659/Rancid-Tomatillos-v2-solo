@@ -58,5 +58,15 @@
 }
 
 .rating-btn:hover {
-  transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+.trailer-comments {
+  display: flex;
+  margin-left: 2em;
+  margin-right: 2em; 
+}
+
+.video-container {
+  padding: 2em; 
 }

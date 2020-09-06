@@ -35,7 +35,8 @@ button:hover {
 
 h1 {
   text-align: center;
-  color: tomato;
+  color: #960317;
+  text-shadow: 1px 1px white;
   font-weight: 600;
   font-size: 3.3em;
   margin-top: .3em;

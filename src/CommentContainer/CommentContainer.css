@@ -5,7 +5,7 @@
 }
 
 .errorMsg {
-  color: red;
+  color: white; 
   text-align: center;
 }
 
@@ -16,7 +16,6 @@
 }
 
 .commentsHeader {
-  color: tomato;
   font-weight: 600;
   margin-top: 0;
 }
@@ -57,9 +56,10 @@ textarea {
 
 .postBtn {
   width: 4em;
-  background-color: lightgrey;
-  border-color: white;
-  border-width: thin;
+  background-color: #960317;
+  color: white;
+  border: none;
   padding: 4px;
   border-radius: 5px;
+  cursor: pointer; 
 }
