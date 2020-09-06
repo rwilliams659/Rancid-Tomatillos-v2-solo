@@ -2,9 +2,6 @@
   color: white; 
   display: flex; 
   flex-direction: column; 
-  /* margin: 5em;  */
-  /* padding-left: 4em; 
-  padding-right: 4em; */
 }
 
 .title-section {
@@ -12,16 +9,8 @@
 }
 
 .title {
-  margin-bottom: 1em; 
+  margin-bottom: 0; 
 }
-
-/* .movie-poster-section {
-  width: 50%; 
-}
-
-.movie-details-img {
-  width: 85%; 
-} */
 
 .details-heart {
   width: 35px;
@@ -36,7 +25,8 @@
 .main-movie-section {
   display: flex; 
   flex-grow: 1;
-  padding: 4em; 
+  padding-left: 4em; 
+  padding-right: 4em; 
 }
 
 .poster {
@@ -47,4 +37,26 @@
   margin: 2em;
   padding: 2em;
   border: 1px solid white; 
+}
+
+.avg-rating {
+  display: inline-block;
+  padding: 0.3em; 
+  color: white;
+  font-size: 1.5em; 
+  background-color: #960317;
+}
+
+.category {
+  font-weight: bolder; 
+}
+
+.rating-btn {
+  background-color: #960317;
+  color: white; 
+  padding: 0.3em; 
+}
+
+.rating-btn:hover {
+  transform: scale(1.1);
 }
